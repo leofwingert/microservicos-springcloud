@@ -1,0 +1,5 @@
+/home/leo/Projetos/microservicos-springcloud/clientes-service/src/main/java/com/microservicos/clientes/ClientesServiceApplication.java
+/home/leo/Projetos/microservicos-springcloud/clientes-service/src/main/java/com/microservicos/clientes/controller/ClienteController.java
+/home/leo/Projetos/microservicos-springcloud/clientes-service/src/main/java/com/microservicos/clientes/model/Cliente.java
+/home/leo/Projetos/microservicos-springcloud/clientes-service/src/main/java/com/microservicos/clientes/repository/ClienteRepository.java
+/home/leo/Projetos/microservicos-springcloud/clientes-service/src/main/java/com/microservicos/clientes/service/ClienteService.java

@@ -1,0 +1,135 @@
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.4)
+
+2026-09-02T21:33:43.631-03:00  INFO 10415 --- [eureka-server] [           main] c.m.e.EurekaServerApplication            : Starting EurekaServerApplication v1.0.0-SNAPSHOT using Java 26.0.2 with PID 10415 (/home/leo/Projetos/microservicos-springcloud/eureka-server/target/eureka-server-1.0.0-SNAPSHOT.jar started by leo in /home/leo/Projetos/microservicos-springcloud)
+2026-09-02T21:33:43.641-03:00  INFO 10415 --- [eureka-server] [           main] c.m.e.EurekaServerApplication            : No active profile set, falling back to 1 default profile: "default"
+2026-09-02T21:33:45.413-03:00  INFO 10415 --- [eureka-server] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=d15412a2-dedd-38bc-86c9-0f5a35ebb0de
+2026-09-02T21:33:45.515-03:00  WARN 10415 --- [eureka-server] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2026-09-02T21:33:45.523-03:00  WARN 10415 --- [eureka-server] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.apache.tomcat.jni.Library in an unnamed module (jar:nested:/home/leo/Projetos/microservicos-springcloud/eureka-server/target/eureka-server-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/tomcat-embed-core-10.1.30.jar!/)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+2026-09-02T21:33:45.931-03:00  INFO 10415 --- [eureka-server] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8761 (http)
+2026-09-02T21:33:45.947-03:00  INFO 10415 --- [eureka-server] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-02T21:33:45.948-03:00  INFO 10415 --- [eureka-server] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2026-09-02T21:33:45.982-03:00  INFO 10415 --- [eureka-server] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-09-02T21:33:45.984-03:00  INFO 10415 --- [eureka-server] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2250 ms
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+WARNING: Final field objectReaderByClass in class com.netflix.discovery.converters.EurekaJacksonCodec has been mutated reflectively by class org.springframework.util.ReflectionUtils in unnamed module @1460a8c0 (jar:nested:/home/leo/Projetos/microservicos-springcloud/eureka-server/target/eureka-server-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/spring-core-6.1.13.jar!/)
+WARNING: Use --enable-final-field-mutation=ALL-UNNAMED to avoid a warning
+WARNING: Mutating final fields will be blocked in a future release unless final field mutation is enabled
+2026-09-02T21:33:47.302-03:00  INFO 10415 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2026-09-02T21:33:47.304-03:00  INFO 10415 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by com.thoughtworks.xstream.converters.reflection.SunUnsafeReflectionProvider (jar:nested:/home/leo/Projetos/microservicos-springcloud/eureka-server/target/eureka-server-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/xstream-1.4.20.jar!/)
+WARNING: Please consider reporting this to the maintainers of class com.thoughtworks.xstream.converters.reflection.SunUnsafeReflectionProvider
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+2026-09-02T21:33:47.593-03:00  INFO 10415 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2026-09-02T21:33:47.593-03:00  INFO 10415 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2026-09-02T21:33:48.707-03:00  WARN 10415 --- [eureka-server] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-09-02T21:33:48.745-03:00  INFO 10415 --- [eureka-server] [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2026-09-02T21:33:48.774-03:00  INFO 10415 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2026-09-02T21:33:48.774-03:00  INFO 10415 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Client configured to neither register nor query for data.
+2026-09-02T21:33:48.776-03:00  INFO 10415 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1788395628775 with initial instances count: 0
+2026-09-02T21:33:48.839-03:00  INFO 10415 --- [eureka-server] [           main] c.n.eureka.DefaultEurekaServerContext    : Initializing ...
+2026-09-02T21:33:48.843-03:00  WARN 10415 --- [eureka-server] [           main] c.n.eureka.cluster.PeerEurekaNodes       : The replica size seems to be empty. Check the route 53 DNS Registry
+2026-09-02T21:33:48.857-03:00  INFO 10415 --- [eureka-server] [           main] c.n.e.registry.AbstractInstanceRegistry  : Finished initializing remote region registries. All known remote regions: []
+2026-09-02T21:33:48.857-03:00  INFO 10415 --- [eureka-server] [           main] c.n.eureka.DefaultEurekaServerContext    : Initialized
+2026-09-02T21:33:48.883-03:00  INFO 10415 --- [eureka-server] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-09-02T21:33:48.963-03:00  INFO 10415 --- [eureka-server] [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application EUREKA-SERVER with eureka with status UP
+2026-09-02T21:33:48.981-03:00  INFO 10415 --- [eureka-server] [       Thread-9] o.s.c.n.e.server.EurekaServerBootstrap   : isAws returned false
+2026-09-02T21:33:48.982-03:00  INFO 10415 --- [eureka-server] [       Thread-9] o.s.c.n.e.server.EurekaServerBootstrap   : Initialized server context
+2026-09-02T21:33:48.983-03:00  INFO 10415 --- [eureka-server] [       Thread-9] c.n.e.r.PeerAwareInstanceRegistryImpl    : Got 1 instances from neighboring DS node
+2026-09-02T21:33:48.983-03:00  INFO 10415 --- [eureka-server] [       Thread-9] c.n.e.r.PeerAwareInstanceRegistryImpl    : Renew threshold is: 1
+2026-09-02T21:33:48.983-03:00  INFO 10415 --- [eureka-server] [       Thread-9] c.n.e.r.PeerAwareInstanceRegistryImpl    : Changing status to UP
+2026-09-02T21:33:48.987-03:00  INFO 10415 --- [eureka-server] [       Thread-9] e.s.EurekaServerInitializerConfiguration : Started Eureka Server
+2026-09-02T21:33:48.990-03:00  INFO 10415 --- [eureka-server] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8761 (http) with context path '/'
+2026-09-02T21:33:48.992-03:00  INFO 10415 --- [eureka-server] [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8761
+2026-09-02T21:33:49.021-03:00  INFO 10415 --- [eureka-server] [           main] c.m.e.EurekaServerApplication            : Started EurekaServerApplication in 6.281 seconds (process running for 7.192)
+2026-09-02T21:34:27.497-03:00  INFO 10415 --- [eureka-server] [nio-8761-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-02T21:34:27.502-03:00  INFO 10415 --- [eureka-server] [nio-8761-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-09-02T21:34:27.507-03:00  INFO 10415 --- [eureka-server] [nio-8761-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2026-09-02T21:34:28.089-03:00  INFO 10415 --- [eureka-server] [nio-8761-exec-6] c.n.e.registry.AbstractInstanceRegistry  : Registered instance CLIENTES-SERVICE/archlinux:clientes-service:8082 with status UP (replication=false)
+2026-09-02T21:34:28.090-03:00  INFO 10415 --- [eureka-server] [nio-8761-exec-4] c.n.e.registry.AbstractInstanceRegistry  : Registered instance REPRESENTANTES-SERVICE/archlinux:representantes-service:8083 with status UP (replication=false)
+2026-09-02T21:34:28.089-03:00  INFO 10415 --- [eureka-server] [nio-8761-exec-5] c.n.e.registry.AbstractInstanceRegistry  : Registered instance PECAS-SERVICE/archlinux:pecas-service:8081 with status UP (replication=false)
+2026-09-02T21:34:43.463-03:00  INFO 10415 --- [eureka-server] [nio-8761-exec-8] c.n.e.registry.AbstractInstanceRegistry  : Registered instance API-GATEWAY/archlinux:api-gateway:8080 with status UP (replication=false)
+2026-09-02T21:34:48.985-03:00  INFO 10415 --- [eureka-server] [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 0ms
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.4)
+
+2026-09-02T21:36:55.028-03:00  INFO 11716 --- [eureka-server] [           main] c.m.e.EurekaServerApplication            : Starting EurekaServerApplication v1.0.0-SNAPSHOT using Java 26.0.2 with PID 11716 (/home/leo/Projetos/microservicos-springcloud/eureka-server/target/eureka-server-1.0.0-SNAPSHOT.jar started by leo in /home/leo/Projetos/microservicos-springcloud)
+2026-09-02T21:36:55.035-03:00  INFO 11716 --- [eureka-server] [           main] c.m.e.EurekaServerApplication            : No active profile set, falling back to 1 default profile: "default"
+2026-09-02T21:36:59.622-03:00  INFO 11716 --- [eureka-server] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=d15412a2-dedd-38bc-86c9-0f5a35ebb0de
+2026-09-02T21:36:59.773-03:00  WARN 11716 --- [eureka-server] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2026-09-02T21:36:59.785-03:00  WARN 11716 --- [eureka-server] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.apache.tomcat.jni.Library in an unnamed module (jar:nested:/home/leo/Projetos/microservicos-springcloud/eureka-server/target/eureka-server-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/tomcat-embed-core-10.1.30.jar!/)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+2026-09-02T21:37:00.549-03:00  INFO 11716 --- [eureka-server] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8761 (http)
+2026-09-02T21:37:00.575-03:00  INFO 11716 --- [eureka-server] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-02T21:37:00.575-03:00  INFO 11716 --- [eureka-server] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2026-09-02T21:37:00.646-03:00  INFO 11716 --- [eureka-server] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-09-02T21:37:00.648-03:00  INFO 11716 --- [eureka-server] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5404 ms
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+WARNING: Final field objectReaderByClass in class com.netflix.discovery.converters.EurekaJacksonCodec has been mutated reflectively by class org.springframework.util.ReflectionUtils in unnamed module @1460a8c0 (jar:nested:/home/leo/Projetos/microservicos-springcloud/eureka-server/target/eureka-server-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/spring-core-6.1.13.jar!/)
+WARNING: Use --enable-final-field-mutation=ALL-UNNAMED to avoid a warning
+WARNING: Mutating final fields will be blocked in a future release unless final field mutation is enabled
+2026-09-02T21:37:04.258-03:00  INFO 11716 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2026-09-02T21:37:04.261-03:00  INFO 11716 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by com.thoughtworks.xstream.converters.reflection.SunUnsafeReflectionProvider (jar:nested:/home/leo/Projetos/microservicos-springcloud/eureka-server/target/eureka-server-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/xstream-1.4.20.jar!/)
+WARNING: Please consider reporting this to the maintainers of class com.thoughtworks.xstream.converters.reflection.SunUnsafeReflectionProvider
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+2026-09-02T21:37:04.937-03:00  INFO 11716 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2026-09-02T21:37:04.937-03:00  INFO 11716 --- [eureka-server] [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2026-09-02T21:37:07.409-03:00  WARN 11716 --- [eureka-server] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-09-02T21:37:07.495-03:00  INFO 11716 --- [eureka-server] [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2026-09-02T21:37:07.552-03:00  INFO 11716 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2026-09-02T21:37:07.553-03:00  INFO 11716 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Client configured to neither register nor query for data.
+2026-09-02T21:37:07.558-03:00  INFO 11716 --- [eureka-server] [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1788395827556 with initial instances count: 0
+2026-09-02T21:37:07.694-03:00  INFO 11716 --- [eureka-server] [           main] c.n.eureka.DefaultEurekaServerContext    : Initializing ...
+2026-09-02T21:37:07.698-03:00  WARN 11716 --- [eureka-server] [           main] c.n.eureka.cluster.PeerEurekaNodes       : The replica size seems to be empty. Check the route 53 DNS Registry
+2026-09-02T21:37:07.717-03:00  INFO 11716 --- [eureka-server] [           main] c.n.e.registry.AbstractInstanceRegistry  : Finished initializing remote region registries. All known remote regions: []
+2026-09-02T21:37:07.718-03:00  INFO 11716 --- [eureka-server] [           main] c.n.eureka.DefaultEurekaServerContext    : Initialized
+2026-09-02T21:37:07.758-03:00  INFO 11716 --- [eureka-server] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-09-02T21:37:07.881-03:00  INFO 11716 --- [eureka-server] [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application EUREKA-SERVER with eureka with status UP
+2026-09-02T21:37:07.903-03:00  INFO 11716 --- [eureka-server] [       Thread-9] o.s.c.n.e.server.EurekaServerBootstrap   : isAws returned false
+2026-09-02T21:37:07.904-03:00  INFO 11716 --- [eureka-server] [       Thread-9] o.s.c.n.e.server.EurekaServerBootstrap   : Initialized server context
+2026-09-02T21:37:07.904-03:00  INFO 11716 --- [eureka-server] [       Thread-9] c.n.e.r.PeerAwareInstanceRegistryImpl    : Got 1 instances from neighboring DS node
+2026-09-02T21:37:07.904-03:00  INFO 11716 --- [eureka-server] [       Thread-9] c.n.e.r.PeerAwareInstanceRegistryImpl    : Renew threshold is: 1
+2026-09-02T21:37:07.905-03:00  INFO 11716 --- [eureka-server] [       Thread-9] c.n.e.r.PeerAwareInstanceRegistryImpl    : Changing status to UP
+2026-09-02T21:37:07.909-03:00  INFO 11716 --- [eureka-server] [       Thread-9] e.s.EurekaServerInitializerConfiguration : Started Eureka Server
+2026-09-02T21:37:07.919-03:00  INFO 11716 --- [eureka-server] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8761 (http) with context path '/'
+2026-09-02T21:37:07.921-03:00  INFO 11716 --- [eureka-server] [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8761
+2026-09-02T21:37:07.951-03:00  INFO 11716 --- [eureka-server] [           main] c.m.e.EurekaServerApplication            : Started EurekaServerApplication in 14.532 seconds (process running for 16.644)
+2026-09-02T21:37:12.376-03:00  INFO 11716 --- [eureka-server] [nio-8761-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-02T21:37:12.377-03:00  INFO 11716 --- [eureka-server] [nio-8761-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-09-02T21:37:12.380-03:00  INFO 11716 --- [eureka-server] [nio-8761-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-09-02T21:37:13.008-03:00  INFO 11716 --- [eureka-server] [nio-8761-exec-3] c.n.e.registry.AbstractInstanceRegistry  : Registered instance REPRESENTANTES-SERVICE/archlinux:representantes-service:8083 with status UP (replication=false)
+2026-09-02T21:37:13.008-03:00  INFO 11716 --- [eureka-server] [nio-8761-exec-4] c.n.e.registry.AbstractInstanceRegistry  : Registered instance PECAS-SERVICE/archlinux:pecas-service:8081 with status UP (replication=false)
+2026-09-02T21:37:13.217-03:00  INFO 11716 --- [eureka-server] [nio-8761-exec-7] c.n.e.registry.AbstractInstanceRegistry  : Registered instance CLIENTES-SERVICE/archlinux:clientes-service:8082 with status UP (replication=false)
+2026-09-02T21:37:37.595-03:00  WARN 11716 --- [eureka-server] [nio-8761-exec-6] c.n.e.registry.AbstractInstanceRegistry  : DS: Registry: lease doesn't exist, registering resource: API-GATEWAY - archlinux:api-gateway:8080
+2026-09-02T21:37:37.596-03:00  WARN 11716 --- [eureka-server] [nio-8761-exec-6] c.n.eureka.resources.InstanceResource    : Not Found (Renew): API-GATEWAY - archlinux:api-gateway:8080
+2026-09-02T21:37:37.676-03:00  INFO 11716 --- [eureka-server] [nio-8761-exec-9] c.n.e.registry.AbstractInstanceRegistry  : Registered instance API-GATEWAY/archlinux:api-gateway:8080 with status UP (replication=false)
+2026-09-02T21:37:37.732-03:00  INFO 11716 --- [eureka-server] [io-8761-exec-10] c.n.e.registry.AbstractInstanceRegistry  : Registered instance API-GATEWAY/archlinux:api-gateway:8080 with status UP (replication=false)
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts

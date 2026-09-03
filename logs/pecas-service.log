@@ -1,0 +1,67 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.4)
+
+2026-09-02T21:30:18.430-03:00  INFO 9140 --- [pecas-service] [           main] c.m.pecas.PecasServiceApplication        : Starting PecasServiceApplication v1.0.0-SNAPSHOT using Java 26.0.2 with PID 9140 (/home/leo/Projetos/microservicos-springcloud/pecas-service/target/pecas-service-1.0.0-SNAPSHOT.jar started by leo in /home/leo/Projetos/microservicos-springcloud)
+2026-09-02T21:30:18.441-03:00  INFO 9140 --- [pecas-service] [           main] c.m.pecas.PecasServiceApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-09-02T21:30:18.650-03:00  INFO 9140 --- [pecas-service] [           main] o.s.c.c.c.ConfigServerConfigDataLoader   : Fetching config from server at : http://localhost:8888
+2026-09-02T21:30:18.651-03:00  INFO 9140 --- [pecas-service] [           main] o.s.c.c.c.ConfigServerConfigDataLoader   : Located environment: name=pecas-service, profiles=[default], label=null, version=null, state=null
+2026-09-02T21:30:22.110-03:00  INFO 9140 --- [pecas-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-02T21:30:22.374-03:00  INFO 9140 --- [pecas-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 245 ms. Found 1 JPA repository interface.
+2026-09-02T21:30:22.810-03:00  INFO 9140 --- [pecas-service] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=02816dd3-1c63-3145-bdc6-1bbef75340f4
+2026-09-02T21:30:23.405-03:00  WARN 9140 --- [pecas-service] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2026-09-02T21:30:23.411-03:00  WARN 9140 --- [pecas-service] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.apache.tomcat.jni.Library in an unnamed module (jar:nested:/home/leo/Projetos/microservicos-springcloud/pecas-service/target/pecas-service-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/tomcat-embed-core-10.1.30.jar!/)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+2026-09-02T21:30:23.955-03:00  INFO 9140 --- [pecas-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2026-09-02T21:30:23.983-03:00  INFO 9140 --- [pecas-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-02T21:30:23.983-03:00  INFO 9140 --- [pecas-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2026-09-02T21:30:24.050-03:00  INFO 9140 --- [pecas-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-09-02T21:30:24.052-03:00  INFO 9140 --- [pecas-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5396 ms
+2026-09-02T21:30:24.329-03:00  INFO 9140 --- [pecas-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-02T21:30:24.637-03:00  INFO 9140 --- [pecas-service] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:pecasdb user=SA
+2026-09-02T21:30:24.641-03:00  INFO 9140 --- [pecas-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-02T21:30:24.669-03:00  INFO 9140 --- [pecas-service] [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:pecasdb'
+2026-09-02T21:30:25.186-03:00  INFO 9140 --- [pecas-service] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-09-02T21:30:25.305-03:00  INFO 9140 --- [pecas-service] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-09-02T21:30:25.380-03:00  INFO 9140 --- [pecas-service] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-09-02T21:30:25.973-03:00  INFO 9140 --- [pecas-service] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-02T21:30:26.090-03:00  WARN 9140 --- [pecas-service] [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-09-02T21:30:27.646-03:00  INFO 9140 --- [pecas-service] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: drop table if exists pecas cascade 
+Hibernate: create table pecas (id bigint generated by default as identity, descricao varchar(500), nome varchar(255) not null, primary key (id))
+2026-09-02T21:30:27.710-03:00  INFO 9140 --- [pecas-service] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-02T21:30:28.655-03:00  WARN 9140 --- [pecas-service] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-09-02T21:30:30.719-03:00  INFO 9140 --- [pecas-service] [           main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2026-09-02T21:30:30.892-03:00  WARN 9140 --- [pecas-service] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-09-02T21:30:30.948-03:00  INFO 9140 --- [pecas-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-09-02T21:30:31.138-03:00  INFO 9140 --- [pecas-service] [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2026-09-02T21:30:31.212-03:00  INFO 9140 --- [pecas-service] [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2026-09-02T21:30:31.221-03:00  INFO 9140 --- [pecas-service] [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2026-09-02T21:30:31.245-03:00  INFO 9140 --- [pecas-service] [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2026-09-02T21:30:31.246-03:00  INFO 9140 --- [pecas-service] [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2026-09-02T21:30:31.246-03:00  INFO 9140 --- [pecas-service] [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2026-09-02T21:30:31.246-03:00  INFO 9140 --- [pecas-service] [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2026-09-02T21:30:31.246-03:00  INFO 9140 --- [pecas-service] [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2026-09-02T21:30:31.246-03:00  INFO 9140 --- [pecas-service] [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2026-09-02T21:30:31.246-03:00  INFO 9140 --- [pecas-service] [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2026-09-02T21:30:32.160-03:00  INFO 9140 --- [pecas-service] [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2026-09-02T21:30:32.163-03:00  INFO 9140 --- [pecas-service] [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2026-09-02T21:30:32.168-03:00  INFO 9140 --- [pecas-service] [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2026-09-02T21:30:32.174-03:00  INFO 9140 --- [pecas-service] [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1788395432172 with initial instances count: 0
+2026-09-02T21:30:32.193-03:00  INFO 9140 --- [pecas-service] [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application PECAS-SERVICE with eureka with status UP
+2026-09-02T21:30:32.196-03:00  INFO 9140 --- [pecas-service] [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1788395432195, current=UP, previous=STARTING]
+2026-09-02T21:30:32.202-03:00  INFO 9140 --- [pecas-service] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PECAS-SERVICE/archlinux:pecas-service:8081: registering service...
+2026-09-02T21:30:32.256-03:00  INFO 9140 --- [pecas-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+2026-09-02T21:30:32.257-03:00  INFO 9140 --- [pecas-service] [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8081
+2026-09-02T21:30:32.305-03:00  INFO 9140 --- [pecas-service] [           main] c.m.pecas.PecasServiceApplication        : Started PecasServiceApplication in 16.339 seconds (process running for 17.343)
+2026-09-02T21:30:32.627-03:00  INFO 9140 --- [pecas-service] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PECAS-SERVICE/archlinux:pecas-service:8081 - registration status: 204

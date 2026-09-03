@@ -1,0 +1,142 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.4)
+
+2026-09-02T21:34:15.268-03:00  INFO 10638 --- [representantes-service] [           main] c.m.r.RepresentantesServiceApplication   : Starting RepresentantesServiceApplication v1.0.0-SNAPSHOT using Java 26.0.2 with PID 10638 (/home/leo/Projetos/microservicos-springcloud/representantes-service/target/representantes-service-1.0.0-SNAPSHOT.jar started by leo in /home/leo/Projetos/microservicos-springcloud)
+2026-09-02T21:34:15.274-03:00  INFO 10638 --- [representantes-service] [           main] c.m.r.RepresentantesServiceApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-09-02T21:34:15.412-03:00  INFO 10638 --- [representantes-service] [           main] o.s.c.c.c.ConfigServerConfigDataLoader   : Fetching config from server at : http://localhost:8888
+2026-09-02T21:34:15.412-03:00  INFO 10638 --- [representantes-service] [           main] o.s.c.c.c.ConfigServerConfigDataLoader   : Located environment: name=representantes-service, profiles=[default], label=null, version=null, state=null
+2026-09-02T21:34:17.727-03:00  INFO 10638 --- [representantes-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-02T21:34:18.086-03:00  INFO 10638 --- [representantes-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 337 ms. Found 1 JPA repository interface.
+2026-09-02T21:34:18.632-03:00  INFO 10638 --- [representantes-service] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=66ab4276-4495-336b-ace4-a39d6180029f
+2026-09-02T21:34:19.430-03:00  WARN 10638 --- [representantes-service] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2026-09-02T21:34:19.436-03:00  WARN 10638 --- [representantes-service] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.apache.tomcat.jni.Library in an unnamed module (jar:nested:/home/leo/Projetos/microservicos-springcloud/representantes-service/target/representantes-service-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/tomcat-embed-core-10.1.30.jar!/)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+2026-09-02T21:34:20.042-03:00  INFO 10638 --- [representantes-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8083 (http)
+2026-09-02T21:34:20.071-03:00  INFO 10638 --- [representantes-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-02T21:34:20.072-03:00  INFO 10638 --- [representantes-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2026-09-02T21:34:20.128-03:00  INFO 10638 --- [representantes-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-09-02T21:34:20.130-03:00  INFO 10638 --- [representantes-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4712 ms
+2026-09-02T21:34:20.389-03:00  INFO 10638 --- [representantes-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-02T21:34:20.707-03:00  INFO 10638 --- [representantes-service] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:representantesdb user=SA
+2026-09-02T21:34:20.710-03:00  INFO 10638 --- [representantes-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-02T21:34:20.730-03:00  INFO 10638 --- [representantes-service] [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:representantesdb'
+2026-09-02T21:34:21.272-03:00  INFO 10638 --- [representantes-service] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-09-02T21:34:21.392-03:00  INFO 10638 --- [representantes-service] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-09-02T21:34:21.499-03:00  INFO 10638 --- [representantes-service] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-09-02T21:34:22.036-03:00  INFO 10638 --- [representantes-service] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-02T21:34:22.123-03:00  WARN 10638 --- [representantes-service] [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-09-02T21:34:23.469-03:00  INFO 10638 --- [representantes-service] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: drop table if exists representantes cascade 
+Hibernate: create table representantes (cpf varchar(255) not null, nome varchar(255) not null, primary key (cpf))
+2026-09-02T21:34:23.522-03:00  INFO 10638 --- [representantes-service] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-02T21:34:24.472-03:00  WARN 10638 --- [representantes-service] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-09-02T21:34:26.220-03:00  INFO 10638 --- [representantes-service] [           main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2026-09-02T21:34:26.394-03:00  WARN 10638 --- [representantes-service] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-09-02T21:34:26.420-03:00  INFO 10638 --- [representantes-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-09-02T21:34:26.589-03:00  INFO 10638 --- [representantes-service] [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2026-09-02T21:34:26.664-03:00  INFO 10638 --- [representantes-service] [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2026-09-02T21:34:26.672-03:00  INFO 10638 --- [representantes-service] [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2026-09-02T21:34:26.689-03:00  INFO 10638 --- [representantes-service] [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2026-09-02T21:34:26.690-03:00  INFO 10638 --- [representantes-service] [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2026-09-02T21:34:26.690-03:00  INFO 10638 --- [representantes-service] [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2026-09-02T21:34:26.690-03:00  INFO 10638 --- [representantes-service] [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2026-09-02T21:34:26.690-03:00  INFO 10638 --- [representantes-service] [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2026-09-02T21:34:26.690-03:00  INFO 10638 --- [representantes-service] [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2026-09-02T21:34:26.690-03:00  INFO 10638 --- [representantes-service] [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2026-09-02T21:34:27.741-03:00  INFO 10638 --- [representantes-service] [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2026-09-02T21:34:27.743-03:00  INFO 10638 --- [representantes-service] [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2026-09-02T21:34:27.749-03:00  INFO 10638 --- [representantes-service] [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2026-09-02T21:34:27.752-03:00  INFO 10638 --- [representantes-service] [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1788395667751 with initial instances count: 0
+2026-09-02T21:34:27.765-03:00  INFO 10638 --- [representantes-service] [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application REPRESENTANTES-SERVICE with eureka with status UP
+2026-09-02T21:34:27.766-03:00  INFO 10638 --- [representantes-service] [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1788395667766, current=UP, previous=STARTING]
+2026-09-02T21:34:27.768-03:00  INFO 10638 --- [representantes-service] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_REPRESENTANTES-SERVICE/archlinux:representantes-service:8083: registering service...
+2026-09-02T21:34:27.795-03:00  INFO 10638 --- [representantes-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8083 (http) with context path '/'
+2026-09-02T21:34:27.796-03:00  INFO 10638 --- [representantes-service] [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8083
+2026-09-02T21:34:27.839-03:00  INFO 10638 --- [representantes-service] [           main] c.m.r.RepresentantesServiceApplication   : Started RepresentantesServiceApplication in 14.843 seconds (process running for 15.943)
+2026-09-02T21:34:28.101-03:00  INFO 10638 --- [representantes-service] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_REPRESENTANTES-SERVICE/archlinux:representantes-service:8083 - registration status: 204
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.4)
+
+2026-09-02T21:36:56.674-03:00  INFO 11719 --- [representantes-service] [           main] c.m.r.RepresentantesServiceApplication   : Starting RepresentantesServiceApplication v1.0.0-SNAPSHOT using Java 26.0.2 with PID 11719 (/home/leo/Projetos/microservicos-springcloud/representantes-service/target/representantes-service-1.0.0-SNAPSHOT.jar started by leo in /home/leo/Projetos/microservicos-springcloud)
+2026-09-02T21:36:56.682-03:00  INFO 11719 --- [representantes-service] [           main] c.m.r.RepresentantesServiceApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-09-02T21:36:56.942-03:00  INFO 11719 --- [representantes-service] [           main] o.s.c.c.c.ConfigServerConfigDataLoader   : Fetching config from server at : http://localhost:8888
+2026-09-02T21:36:56.944-03:00  INFO 11719 --- [representantes-service] [           main] o.s.c.c.c.ConfigServerConfigDataLoader   : Located environment: name=representantes-service, profiles=[default], label=null, version=null, state=null
+2026-09-02T21:37:00.432-03:00  INFO 11719 --- [representantes-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-02T21:37:00.804-03:00  INFO 11719 --- [representantes-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 342 ms. Found 1 JPA repository interface.
+2026-09-02T21:37:01.655-03:00  INFO 11719 --- [representantes-service] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=66ab4276-4495-336b-ace4-a39d6180029f
+2026-09-02T21:37:02.966-03:00  WARN 11719 --- [representantes-service] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2026-09-02T21:37:02.983-03:00  WARN 11719 --- [representantes-service] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.apache.tomcat.jni.Library in an unnamed module (jar:nested:/home/leo/Projetos/microservicos-springcloud/representantes-service/target/representantes-service-1.0.0-SNAPSHOT.jar/!BOOT-INF/lib/tomcat-embed-core-10.1.30.jar!/)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+2026-09-02T21:37:03.794-03:00  INFO 11719 --- [representantes-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8083 (http)
+2026-09-02T21:37:03.845-03:00  INFO 11719 --- [representantes-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-02T21:37:03.849-03:00  INFO 11719 --- [representantes-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2026-09-02T21:37:03.981-03:00  INFO 11719 --- [representantes-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-09-02T21:37:03.985-03:00  INFO 11719 --- [representantes-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 7036 ms
+2026-09-02T21:37:04.494-03:00  INFO 11719 --- [representantes-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-02T21:37:05.084-03:00  INFO 11719 --- [representantes-service] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:representantesdb user=SA
+2026-09-02T21:37:05.090-03:00  INFO 11719 --- [representantes-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-02T21:37:05.122-03:00  INFO 11719 --- [representantes-service] [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:representantesdb'
+2026-09-02T21:37:05.948-03:00  INFO 11719 --- [representantes-service] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-09-02T21:37:06.179-03:00  INFO 11719 --- [representantes-service] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-09-02T21:37:06.288-03:00  INFO 11719 --- [representantes-service] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-09-02T21:37:06.950-03:00  INFO 11719 --- [representantes-service] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-02T21:37:07.059-03:00  WARN 11719 --- [representantes-service] [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-09-02T21:37:08.806-03:00  INFO 11719 --- [representantes-service] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: drop table if exists representantes cascade 
+Hibernate: create table representantes (cpf varchar(255) not null, nome varchar(255) not null, primary key (cpf))
+2026-09-02T21:37:08.855-03:00  INFO 11719 --- [representantes-service] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-02T21:37:09.695-03:00  WARN 11719 --- [representantes-service] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-09-02T21:37:11.232-03:00  INFO 11719 --- [representantes-service] [           main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2026-09-02T21:37:11.397-03:00  WARN 11719 --- [representantes-service] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-09-02T21:37:11.425-03:00  INFO 11719 --- [representantes-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-09-02T21:37:11.577-03:00  INFO 11719 --- [representantes-service] [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2026-09-02T21:37:11.638-03:00  INFO 11719 --- [representantes-service] [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2026-09-02T21:37:11.646-03:00  INFO 11719 --- [representantes-service] [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2026-09-02T21:37:11.684-03:00  INFO 11719 --- [representantes-service] [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2026-09-02T21:37:11.685-03:00  INFO 11719 --- [representantes-service] [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2026-09-02T21:37:11.685-03:00  INFO 11719 --- [representantes-service] [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2026-09-02T21:37:11.685-03:00  INFO 11719 --- [representantes-service] [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2026-09-02T21:37:11.685-03:00  INFO 11719 --- [representantes-service] [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2026-09-02T21:37:11.686-03:00  INFO 11719 --- [representantes-service] [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2026-09-02T21:37:11.686-03:00  INFO 11719 --- [representantes-service] [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2026-09-02T21:37:12.618-03:00  INFO 11719 --- [representantes-service] [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2026-09-02T21:37:12.621-03:00  INFO 11719 --- [representantes-service] [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2026-09-02T21:37:12.626-03:00  INFO 11719 --- [representantes-service] [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2026-09-02T21:37:12.629-03:00  INFO 11719 --- [representantes-service] [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1788395832628 with initial instances count: 0
+2026-09-02T21:37:12.643-03:00  INFO 11719 --- [representantes-service] [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application REPRESENTANTES-SERVICE with eureka with status UP
+2026-09-02T21:37:12.645-03:00  INFO 11719 --- [representantes-service] [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1788395832645, current=UP, previous=STARTING]
+2026-09-02T21:37:12.649-03:00  INFO 11719 --- [representantes-service] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_REPRESENTANTES-SERVICE/archlinux:representantes-service:8083: registering service...
+2026-09-02T21:37:12.678-03:00  INFO 11719 --- [representantes-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8083 (http) with context path '/'
+2026-09-02T21:37:12.680-03:00  INFO 11719 --- [representantes-service] [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8083
+2026-09-02T21:37:12.709-03:00  INFO 11719 --- [representantes-service] [           main] c.m.r.RepresentantesServiceApplication   : Started RepresentantesServiceApplication in 19.523 seconds (process running for 21.402)
+2026-09-02T21:37:13.019-03:00  INFO 11719 --- [representantes-service] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_REPRESENTANTES-SERVICE/archlinux:representantes-service:8083 - registration status: 204
+2026-09-02T21:37:42.622-03:00  INFO 11719 --- [representantes-service] [reshExecutor-%d] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2026-09-02T21:37:42.623-03:00  INFO 11719 --- [representantes-service] [reshExecutor-%d] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2026-09-02T21:37:42.623-03:00  INFO 11719 --- [representantes-service] [reshExecutor-%d] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2026-09-02T21:37:42.623-03:00  INFO 11719 --- [representantes-service] [reshExecutor-%d] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2026-09-02T21:37:42.623-03:00  INFO 11719 --- [representantes-service] [reshExecutor-%d] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2026-09-02T21:37:42.623-03:00  INFO 11719 --- [representantes-service] [reshExecutor-%d] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+2026-09-02T21:37:42.624-03:00  INFO 11719 --- [representantes-service] [reshExecutor-%d] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2026-09-02T21:37:42.698-03:00  INFO 11719 --- [representantes-service] [reshExecutor-%d] com.netflix.discovery.DiscoveryClient    : The response status is 200

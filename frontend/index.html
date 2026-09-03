@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sistema de Microserviços - Gerenciamento de Peças, Clientes e Representantes Comerciais via Spring Cloud">
+    <title>MicroManager — Sistema de Microserviços</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">⚙️</div>
+                <div class="logo-text">
+                    <span class="logo-title">MicroManager</span>
+                    <span class="logo-subtitle">Spring Cloud Microservices</span>
+                </div>
+            </div>
+            <div class="header-status">
+                <div class="status-dot" id="gateway-status"></div>
+                <span id="gateway-label">Verificando Gateway...</span>
+                <a href="http://localhost:8761" target="_blank" class="btn-eureka">
+                    🔍 Eureka Dashboard
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+        <button class="tab-btn active" id="tab-pecas" onclick="switchTab('pecas')">
+            <span class="tab-icon">🔩</span>
+            <span class="tab-label">Peças</span>
+        </button>
+        <button class="tab-btn" id="tab-clientes" onclick="switchTab('clientes')">
+            <span class="tab-icon">👥</span>
+            <span class="tab-label">Clientes</span>
+        </button>
+        <button class="tab-btn" id="tab-representantes" onclick="switchTab('representantes')">
+            <span class="tab-icon">💼</span>
+            <span class="tab-label">Representantes</span>
+        </button>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- ==================== PEÇAS ==================== -->
+        <section class="tab-section active" id="section-pecas">
+            <div class="section-header">
+                <h1>🔩 Gerenciamento de Peças</h1>
+                <p>Cadastre e consulte peças do estoque pelo Gateway (porta 8080)</p>
+            </div>
+
+            <div class="content-grid">
+                <!-- Form Card -->
+                <div class="card form-card">
+                    <div class="card-header">
+                        <h2>📝 Cadastrar Peça</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="form-peca" onsubmit="cadastrarPeca(event)">
+                            <div class="form-group">
+                                <label for="peca-nome">Nome da Peça *</label>
+                                <input type="text" id="peca-nome" placeholder="Ex.: Parafuso M8" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="peca-descricao">Descrição</label>
+                                <textarea id="peca-descricao" placeholder="Descreva a peça..." rows="3" style="resize: none;"></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary" id="btn-cadastrar-peca">
+                                <span class="btn-icon">➕</span> Cadastrar Peça
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Search Card -->
+                <div class="card search-card">
+                    <div class="card-header">
+                        <h2>🔍 Buscar Peça</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="search-group">
+                            <label>Buscar por ID</label>
+                            <div class="input-row">
+                                <input type="number" id="peca-search-id" placeholder="Nº de identificação" min="1">
+                                <button class="btn-secondary" onclick="buscarPecaPorId()">Buscar</button>
+                            </div>
+                        </div>
+                        <div class="search-group">
+                            <label>Buscar por Nome</label>
+                            <div class="input-row">
+                                <input type="text" id="peca-search-nome" placeholder="Nome ou parte do nome">
+                                <button class="btn-secondary" onclick="buscarPecaPorNome()">Buscar</button>
+                            </div>
+                        </div>
+                        <button class="btn-outline" onclick="listarPecas()">
+                            📋 Listar Todas as Peças
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results -->
+            <div class="card results-card" id="results-pecas" style="display:none;">
+                <div class="card-header">
+                    <h2>📋 Resultados</h2>
+                    <button class="btn-close" onclick="fecharResultados('pecas')">✕</button>
+                </div>
+                <div class="card-body">
+                    <div id="pecas-list" class="items-grid"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== CLIENTES ==================== -->
+        <section class="tab-section" id="section-clientes">
+            <div class="section-header">
+                <h1>👥 Gerenciamento de Clientes</h1>
+                <p>Cadastre e consulte clientes pelo Gateway (porta 8080)</p>
+            </div>
+
+            <div class="content-grid">
+                <div class="card form-card">
+                    <div class="card-header">
+                        <h2>📝 Cadastrar Cliente</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="form-cliente" onsubmit="cadastrarCliente(event)">
+                            <div class="form-group">
+                                <label for="cliente-cpf">CPF *</label>
+                                <input type="text" id="cliente-cpf" placeholder="000.000.000-00" maxlength="14" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cliente-nome">Nome do Cliente *</label>
+                                <input type="text" id="cliente-nome" placeholder="Nome completo" required>
+                            </div>
+                            <button type="submit" class="btn-primary" id="btn-cadastrar-cliente">
+                                <span class="btn-icon">➕</span> Cadastrar Cliente
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card search-card">
+                    <div class="card-header">
+                        <h2>🔍 Buscar Cliente</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="search-group">
+                            <label>Buscar por CPF</label>
+                            <div class="input-row">
+                                <input type="text" id="cliente-search-cpf" placeholder="000.000.000-00">
+                                <button class="btn-secondary" onclick="buscarClientePorCpf()">Buscar</button>
+                            </div>
+                        </div>
+                        <div class="search-group">
+                            <label>Buscar por Nome</label>
+                            <div class="input-row">
+                                <input type="text" id="cliente-search-nome" placeholder="Nome ou parte do nome">
+                                <button class="btn-secondary" onclick="buscarClientePorNome()">Buscar</button>
+                            </div>
+                        </div>
+                        <button class="btn-outline" onclick="listarClientes()">
+                            📋 Listar Todos os Clientes
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card results-card" id="results-clientes" style="display:none;">
+                <div class="card-header">
+                    <h2>📋 Resultados</h2>
+                    <button class="btn-close" onclick="fecharResultados('clientes')">✕</button>
+                </div>
+                <div class="card-body">
+                    <div id="clientes-list" class="items-grid"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== REPRESENTANTES ==================== -->
+        <section class="tab-section" id="section-representantes">
+            <div class="section-header">
+                <h1>💼 Gerenciamento de Representantes</h1>
+                <p>Cadastre e consulte representantes comerciais pelo Gateway (porta 8080)</p>
+            </div>
+
+            <div class="content-grid">
+                <div class="card form-card">
+                    <div class="card-header">
+                        <h2>📝 Cadastrar Representante</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="form-representante" onsubmit="cadastrarRepresentante(event)">
+                            <div class="form-group">
+                                <label for="rep-cpf">CPF *</label>
+                                <input type="text" id="rep-cpf" placeholder="000.000.000-00" maxlength="14" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="rep-nome">Nome do Representante *</label>
+                                <input type="text" id="rep-nome" placeholder="Nome completo" required>
+                            </div>
+                            <button type="submit" class="btn-primary" id="btn-cadastrar-rep">
+                                <span class="btn-icon">➕</span> Cadastrar Representante
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card search-card">
+                    <div class="card-header">
+                        <h2>🔍 Buscar Representante</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="search-group">
+                            <label>Buscar por CPF</label>
+                            <div class="input-row">
+                                <input type="text" id="rep-search-cpf" placeholder="000.000.000-00">
+                                <button class="btn-secondary" onclick="buscarRepresentantePorCpf()">Buscar</button>
+                            </div>
+                        </div>
+                        <div class="search-group">
+                            <label>Buscar por Nome</label>
+                            <div class="input-row">
+                                <input type="text" id="rep-search-nome" placeholder="Nome ou parte do nome">
+                                <button class="btn-secondary" onclick="buscarRepresentantePorNome()">Buscar</button>
+                            </div>
+                        </div>
+                        <button class="btn-outline" onclick="listarRepresentantes()">
+                            📋 Listar Todos os Representantes
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card results-card" id="results-representantes" style="display:none;">
+                <div class="card-header">
+                    <h2>📋 Resultados</h2>
+                    <button class="btn-close" onclick="fecharResultados('representantes')">✕</button>
+                </div>
+                <div class="card-body">
+                    <div id="representantes-list" class="items-grid"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

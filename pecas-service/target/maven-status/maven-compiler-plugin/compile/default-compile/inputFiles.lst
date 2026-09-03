@@ -1,0 +1,5 @@
+/home/leo/Projetos/microservicos-springcloud/pecas-service/src/main/java/com/microservicos/pecas/PecasServiceApplication.java
+/home/leo/Projetos/microservicos-springcloud/pecas-service/src/main/java/com/microservicos/pecas/controller/PecaController.java
+/home/leo/Projetos/microservicos-springcloud/pecas-service/src/main/java/com/microservicos/pecas/model/Peca.java
+/home/leo/Projetos/microservicos-springcloud/pecas-service/src/main/java/com/microservicos/pecas/repository/PecaRepository.java
+/home/leo/Projetos/microservicos-springcloud/pecas-service/src/main/java/com/microservicos/pecas/service/PecaService.java
