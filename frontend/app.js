@@ -1,9 +1,9 @@
 /* ===================================================
    MicroManager — JavaScript
-   Gateway: http://localhost:8080
+   Gateway: proxied via Nginx
    =================================================== */
 
-const GATEWAY = 'http://localhost:8080';
+const GATEWAY = '';
 
 // ---- Tab Navigation ----
 function switchTab(tab) {
@@ -19,10 +19,10 @@ async function checkGatewayStatus() {
     const dot = document.getElementById('gateway-status');
     const label = document.getElementById('gateway-label');
     try {
-        const res = await fetch(`${GATEWAY}/actuator/health`, { signal: AbortSignal.timeout(3000) });
+        const res = await fetch(`${GATEWAY}/actuator/health`, { signal: AbortSignal.timeout(10000) });
         if (res.ok) {
             dot.className = 'status-dot online';
-            label.textContent = 'Gateway Online (:8080)';
+            label.textContent = 'Gateway Online';
         } else {
             throw new Error();
         }
