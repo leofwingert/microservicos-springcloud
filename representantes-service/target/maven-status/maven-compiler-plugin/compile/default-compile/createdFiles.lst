@@ -1,5 +1,5 @@
 com/microservicos/representantes/controller/RepresentanteController.class
 com/microservicos/representantes/model/Representante.class
-com/microservicos/representantes/service/RepresentanteService.class
 com/microservicos/representantes/repository/RepresentanteRepository.class
+com/microservicos/representantes/service/RepresentanteService.class
 com/microservicos/representantes/RepresentantesServiceApplication.class
