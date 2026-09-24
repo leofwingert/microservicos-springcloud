@@ -31,4 +31,19 @@ public class ClienteService {
     public List<Cliente> buscarPorNome(String nome) {
         return repository.findByNomeContainingIgnoreCase(nome);
     }
+
+    public Optional<Cliente> atualizar(String cpf, Cliente dadosAtualizados) {
+        return repository.findById(cpf).map(cliente -> {
+            cliente.setNome(dadosAtualizados.getNome());
+            return repository.save(cliente);
+        });
+    }
+
+    public boolean deletar(String cpf) {
+        if (!repository.existsById(cpf)) {
+            return false;
+        }
+        repository.deleteById(cpf);
+        return true;
+    }
 }

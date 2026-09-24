@@ -18,6 +18,8 @@ import java.util.Optional;
 
 import static org.hamcrest.Matchers.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -147,6 +149,73 @@ class PecaControllerTest {
         when(service.buscarPorNome("inexistente")).thenReturn(Collections.emptyList());
 
         mockMvc.perform(get("/api/pecas/nome/inexistente"))
+                .andExpect(status().isNotFound());
+    }
+
+    // ---------- PUT /api/pecas/{id} ----------
+
+    @Test
+    @DisplayName("PUT /api/pecas/{id} - Deve atualizar peça e retornar 200")
+    void deveAtualizarPeca() throws Exception {
+        Peca atualizada = new Peca("Parafuso M10", "Descrição atualizada");
+        atualizada.setId(1L);
+        when(service.atualizar(eq(1L), any(Peca.class))).thenReturn(Optional.of(atualizada));
+
+        String json = objectMapper.writeValueAsString(new Peca("Parafuso M10", "Descrição atualizada"));
+
+        mockMvc.perform(put("/api/pecas/1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.nome").value("Parafuso M10"))
+                .andExpect(jsonPath("$.descricao").value("Descrição atualizada"));
+
+        verify(service, times(1)).atualizar(eq(1L), any(Peca.class));
+    }
+
+    @Test
+    @DisplayName("PUT /api/pecas/{id} - Deve retornar 404 quando peça não encontrada")
+    void deveRetornar404AoAtualizarPecaInexistente() throws Exception {
+        when(service.atualizar(eq(99L), any(Peca.class))).thenReturn(Optional.empty());
+
+        String json = objectMapper.writeValueAsString(new Peca("Inexistente", "Descrição"));
+
+        mockMvc.perform(put("/api/pecas/99")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
+    @DisplayName("PUT /api/pecas/{id} - Deve retornar 400 quando nome é vazio")
+    void deveRetornar400AoAtualizarComNomeVazio() throws Exception {
+        mockMvc.perform(put("/api/pecas/1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"nome\": \"\", \"descricao\": \"Teste\"}"))
+                .andExpect(status().isBadRequest());
+
+        verify(service, never()).atualizar(anyLong(), any(Peca.class));
+    }
+
+    // ---------- DELETE /api/pecas/{id} ----------
+
+    @Test
+    @DisplayName("DELETE /api/pecas/{id} - Deve remover peça e retornar 204")
+    void deveRemoverPeca() throws Exception {
+        when(service.deletar(1L)).thenReturn(true);
+
+        mockMvc.perform(delete("/api/pecas/1"))
+                .andExpect(status().isNoContent());
+
+        verify(service, times(1)).deletar(1L);
+    }
+
+    @Test
+    @DisplayName("DELETE /api/pecas/{id} - Deve retornar 404 quando peça não encontrada")
+    void deveRetornar404AoRemoverPecaInexistente() throws Exception {
+        when(service.deletar(99L)).thenReturn(false);
+
+        mockMvc.perform(delete("/api/pecas/99"))
                 .andExpect(status().isNotFound());
     }
 }

@@ -46,4 +46,18 @@ public class ClienteController {
         }
         return ResponseEntity.ok(resultado);
     }
+
+    @PutMapping("/{cpf}")
+    public ResponseEntity<Cliente> atualizar(@PathVariable String cpf, @Valid @RequestBody Cliente cliente) {
+        return service.atualizar(cpf, cliente)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/{cpf}")
+    public ResponseEntity<Void> deletar(@PathVariable String cpf) {
+        return service.deletar(cpf)
+                ? ResponseEntity.noContent().build()
+                : ResponseEntity.notFound().build();
+    }
 }

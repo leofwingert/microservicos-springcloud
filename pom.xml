@@ -27,6 +27,7 @@
         <module>pecas-service</module>
         <module>clientes-service</module>
         <module>representantes-service</module>
+        <module>integration-tests</module>
     </modules>
 
     <properties>
@@ -35,6 +36,8 @@
         <!-- O Byte Buddy que vem com o Mockito 5.11.0 (via Spring Boot 3.3.4) só suporta
              oficialmente até o Java 23 e quebra o @MockBean em JDKs mais novos (ex: Java 25). -->
         <byte-buddy.version>1.17.8</byte-buddy.version>
+        <pitest-maven.version>1.17.0</pitest-maven.version>
+        <pitest-junit5-plugin.version>1.2.1</pitest-junit5-plugin.version>
     </properties>
 
     <dependencyManagement>

@@ -18,6 +18,8 @@ import java.util.Optional;
 
 import static org.hamcrest.Matchers.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -144,6 +146,71 @@ class ClienteControllerTest {
         when(service.buscarPorNome("inexistente")).thenReturn(Collections.emptyList());
 
         mockMvc.perform(get("/api/clientes/nome/inexistente"))
+                .andExpect(status().isNotFound());
+    }
+
+    // ---------- PUT /api/clientes/{cpf} ----------
+
+    @Test
+    @DisplayName("PUT /api/clientes/{cpf} - Deve atualizar cliente e retornar 200")
+    void deveAtualizarCliente() throws Exception {
+        Cliente atualizado = new Cliente("12345678900", "João Silva Atualizado");
+        when(service.atualizar(eq("12345678900"), any(Cliente.class))).thenReturn(Optional.of(atualizado));
+
+        String json = objectMapper.writeValueAsString(new Cliente("12345678900", "João Silva Atualizado"));
+
+        mockMvc.perform(put("/api/clientes/12345678900")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.nome").value("João Silva Atualizado"));
+
+        verify(service, times(1)).atualizar(eq("12345678900"), any(Cliente.class));
+    }
+
+    @Test
+    @DisplayName("PUT /api/clientes/{cpf} - Deve retornar 404 quando cliente não encontrado")
+    void deveRetornar404AoAtualizarClienteInexistente() throws Exception {
+        when(service.atualizar(eq("00000000000"), any(Cliente.class))).thenReturn(Optional.empty());
+
+        String json = objectMapper.writeValueAsString(new Cliente("00000000000", "Inexistente"));
+
+        mockMvc.perform(put("/api/clientes/00000000000")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
+    @DisplayName("PUT /api/clientes/{cpf} - Deve retornar 400 quando nome é vazio")
+    void deveRetornar400AoAtualizarComNomeVazio() throws Exception {
+        mockMvc.perform(put("/api/clientes/12345678900")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"cpf\": \"12345678900\", \"nome\": \"\"}"))
+                .andExpect(status().isBadRequest());
+
+        verify(service, never()).atualizar(anyString(), any(Cliente.class));
+    }
+
+    // ---------- DELETE /api/clientes/{cpf} ----------
+
+    @Test
+    @DisplayName("DELETE /api/clientes/{cpf} - Deve remover cliente e retornar 204")
+    void deveRemoverCliente() throws Exception {
+        when(service.deletar("12345678900")).thenReturn(true);
+
+        mockMvc.perform(delete("/api/clientes/12345678900"))
+                .andExpect(status().isNoContent());
+
+        verify(service, times(1)).deletar("12345678900");
+    }
+
+    @Test
+    @DisplayName("DELETE /api/clientes/{cpf} - Deve retornar 404 quando cliente não encontrado")
+    void deveRetornar404AoRemoverClienteInexistente() throws Exception {
+        when(service.deletar("00000000000")).thenReturn(false);
+
+        mockMvc.perform(delete("/api/clientes/00000000000"))
                 .andExpect(status().isNotFound());
     }
 }
