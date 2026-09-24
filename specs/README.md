@@ -14,6 +14,7 @@ O objetivo é servir de referência para entender **por que** o projeto está do
 | [04](04-correcao-docker-jdk-bytebuddy.md) | [`2130e85`](https://github.com/leofwingert/microservicos-springcloud/commit/2130e8567c75d4c468c96fd2433daf6c2fd61e77) | 2026-09-16 | Correções de compatibilidade: Docker no Apple Silicon e Mockito no Java 25 |
 | [05](05-testes-clientes-representantes.md) | [`f91d28f`](https://github.com/leofwingert/microservicos-springcloud/commit/f91d28fb9227a07d2e4e282507165b0833f5042a) | 2026-09-21 | Paridade de testes: clientes-service e representantes-service |
 | [06](06-gitignore-limpeza.md) | [`d6b908b`](https://github.com/leofwingert/microservicos-springcloud/commit/d6b908b5f9f46841f541169ae1c6362f040a599d) | 2026-09-21 | `.gitignore` e remoção de artefatos de build do versionamento |
+| [07](07-crud-completo-testes-integracao-mutacao.md) | [`01ef59d`](https://github.com/leofwingert/microservicos-springcloud/commit/01ef59d42769969d4bfa44d341ee16eaf36bd40f) | 2026-09-23 | CRUD completo (PUT/DELETE), testes de integração fim a fim e teste de mutação |
 
 ## Como ler
 
