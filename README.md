@@ -18,6 +18,15 @@ Peças       Clientes  Representantes
   └────┬────────┘────────┘
        │
   Config Server (:8888)
+
+       ┌──────────────────────────────┐
+       │     Observabilidade          │
+       │                              │
+       │  Prometheus (:9090)          │
+       │       ▼                      │
+       │  Grafana (:3001)             │
+       │  (Dashboard pré-configurado) │
+       └──────────────────────────────┘
 ```
 
 ## 📦 Módulos
@@ -30,20 +39,33 @@ Peças       Clientes  Representantes
 | `pecas-service` | 8081 | Microserviço de Peças |
 | `clientes-service` | 8082 | Microserviço de Clientes |
 | `representantes-service` | 8083 | Microserviço de Representantes |
+| `prometheus` | 9090 | Coleta de Métricas |
+| `grafana` | 3001 | Visualização de Métricas |
 
 ## 🚀 Como Executar
 
 ### Pré-requisitos
 - Java 17+
 - Maven 3.8+
+- Docker e Docker Compose (para execução via containers)
 
-### Opção 1 — Script automático
+### Opção 1 — Docker Compose (recomendado)
+
+```bash
+docker compose up --build
+```
+
+Isso inicia **todos** os serviços, incluindo Prometheus e Grafana, com o dashboard pré-configurado.
+
+### Opção 2 — Script automático
 ```bash
 chmod +x start-all.sh stop-all.sh
 ./start-all.sh
 ```
 
-### Opção 2 — Manual (na ordem abaixo!)
+> ⚠️ **Nota**: Os scripts `start-all.sh` e `stop-all.sh` não iniciam Prometheus/Grafana. Para monitoramento, use o Docker Compose.
+
+### Opção 3 — Manual (na ordem abaixo!)
 
 ```bash
 # 1. Config Server (primeiro!)
@@ -71,6 +93,30 @@ cd ../api-gateway && mvn spring-boot:run &
 | http://localhost:8080 | API Gateway |
 | http://localhost:8761 | Eureka Dashboard |
 | http://localhost:8888 | Config Server |
+| http://localhost:9090 | Prometheus |
+| http://localhost:3001 | Grafana (`admin` / `admin`) |
+
+## 📊 Observabilidade (Prometheus + Grafana)
+
+O projeto inclui monitoramento completo via **Prometheus** (coleta) e **Grafana** (visualização). Consulte o [README de Observabilidade](docs/observabilidade.md) para detalhes completos.
+
+### Métricas Expostas
+
+Cada serviço expõe métricas no formato Prometheus via Spring Boot Actuator:
+
+```
+GET http://localhost:{porta}/actuator/prometheus
+```
+
+### Dashboard Pré-configurado
+
+O Grafana inclui o dashboard **"Microserviços Spring Cloud"** com painéis para:
+
+- **Status** — UP/DOWN de cada serviço
+- **Requisições HTTP** — taxa por serviço e por status code
+- **Latência** — percentis p50, p95, p99
+- **JVM** — memória heap/non-heap, CPU, threads ativas
+- **GC** — pausas e tempo de garbage collection
 
 ## 📋 API Endpoints (via Gateway :8080)
 
@@ -130,3 +176,7 @@ curl -X POST http://localhost:8080/api/representantes \
 - **H2** (banco em memória por serviço)
 - **Maven** (multi-módulo)
 - **Frontend**: HTML5 + CSS3 + JavaScript
+- **Micrometer** + **Prometheus** (métricas)
+- **Grafana** (visualização de métricas)
+- **Docker** + **Docker Compose** (orquestração de containers)
+

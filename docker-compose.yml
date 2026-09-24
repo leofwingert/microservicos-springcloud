@@ -1,14 +1,16 @@
 services:
   config-server:
     build:
-      context: ./config-server
+      context: .
+      dockerfile: config-server/Dockerfile
     container_name: config-server
     ports:
       - "8888:8888"
 
   eureka-server:
     build:
-      context: ./eureka-server
+      context: .
+      dockerfile: eureka-server/Dockerfile
     container_name: eureka-server
     ports:
       - "8761:8761"
@@ -19,7 +21,8 @@ services:
 
   api-gateway:
     build:
-      context: ./api-gateway
+      context: .
+      dockerfile: api-gateway/Dockerfile
     container_name: api-gateway
     ports:
       - "8080:8080"
@@ -35,7 +38,8 @@ services:
 
   pecas-service:
     build:
-      context: ./pecas-service
+      context: .
+      dockerfile: pecas-service/Dockerfile
     container_name: pecas-service
     environment:
       - SPRING_CONFIG_IMPORT=optional:configserver:http://config-server:8888
@@ -46,7 +50,8 @@ services:
 
   clientes-service:
     build:
-      context: ./clientes-service
+      context: .
+      dockerfile: clientes-service/Dockerfile
     container_name: clientes-service
     environment:
       - SPRING_CONFIG_IMPORT=optional:configserver:http://config-server:8888
@@ -57,7 +62,8 @@ services:
 
   representantes-service:
     build:
-      context: ./representantes-service
+      context: .
+      dockerfile: representantes-service/Dockerfile
     container_name: representantes-service
     environment:
       - SPRING_CONFIG_IMPORT=optional:configserver:http://config-server:8888
@@ -74,3 +80,32 @@ services:
       - "3000:80"
     depends_on:
       - api-gateway
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    depends_on:
+      - config-server
+      - eureka-server
+      - api-gateway
+      - pecas-service
+      - clientes-service
+      - representantes-service
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3001:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+    depends_on:
+      - prometheus
