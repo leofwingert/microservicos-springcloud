@@ -138,4 +138,55 @@ class RepresentanteServiceTest {
         assertTrue(resultado.isEmpty());
         verify(repository, times(1)).findByNomeContainingIgnoreCase("inexistente");
     }
+
+    // ---------- atualizar ----------
+
+    @Test
+    @DisplayName("Deve atualizar o nome de um representante existente")
+    void deveAtualizarRepresentanteExistente() {
+        when(repository.findById("12345678900")).thenReturn(Optional.of(representante));
+        when(repository.save(any(Representante.class))).thenAnswer(invocation -> invocation.getArgument(0));
+
+        Optional<Representante> resultado = service.atualizar("12345678900", new Representante("12345678900", "Carlos Lima Atualizado"));
+
+        assertTrue(resultado.isPresent());
+        assertEquals("Carlos Lima Atualizado", resultado.get().getNome());
+        assertEquals("12345678900", resultado.get().getCpf());
+        verify(repository, times(1)).save(any(Representante.class));
+    }
+
+    @Test
+    @DisplayName("Deve retornar Optional vazio ao atualizar representante inexistente")
+    void deveRetornarVazioAoAtualizarRepresentanteInexistente() {
+        when(repository.findById(anyString())).thenReturn(Optional.empty());
+
+        Optional<Representante> resultado = service.atualizar("00000000000", new Representante("00000000000", "Inexistente"));
+
+        assertTrue(resultado.isEmpty());
+        verify(repository, never()).save(any(Representante.class));
+    }
+
+    // ---------- deletar ----------
+
+    @Test
+    @DisplayName("Deve deletar um representante existente e retornar true")
+    void deveDeletarRepresentanteExistente() {
+        when(repository.existsById("12345678900")).thenReturn(true);
+
+        boolean resultado = service.deletar("12345678900");
+
+        assertTrue(resultado);
+        verify(repository, times(1)).deleteById("12345678900");
+    }
+
+    @Test
+    @DisplayName("Deve retornar false ao deletar representante inexistente")
+    void deveRetornarFalseAoDeletarRepresentanteInexistente() {
+        when(repository.existsById("00000000000")).thenReturn(false);
+
+        boolean resultado = service.deletar("00000000000");
+
+        assertFalse(resultado);
+        verify(repository, never()).deleteById(anyString());
+    }
 }

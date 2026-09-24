@@ -138,4 +138,55 @@ class ClienteServiceTest {
         assertTrue(resultado.isEmpty());
         verify(repository, times(1)).findByNomeContainingIgnoreCase("inexistente");
     }
+
+    // ---------- atualizar ----------
+
+    @Test
+    @DisplayName("Deve atualizar o nome de um cliente existente")
+    void deveAtualizarClienteExistente() {
+        when(repository.findById("12345678900")).thenReturn(Optional.of(cliente));
+        when(repository.save(any(Cliente.class))).thenAnswer(invocation -> invocation.getArgument(0));
+
+        Optional<Cliente> resultado = service.atualizar("12345678900", new Cliente("12345678900", "João Silva Atualizado"));
+
+        assertTrue(resultado.isPresent());
+        assertEquals("João Silva Atualizado", resultado.get().getNome());
+        assertEquals("12345678900", resultado.get().getCpf());
+        verify(repository, times(1)).save(any(Cliente.class));
+    }
+
+    @Test
+    @DisplayName("Deve retornar Optional vazio ao atualizar cliente inexistente")
+    void deveRetornarVazioAoAtualizarClienteInexistente() {
+        when(repository.findById(anyString())).thenReturn(Optional.empty());
+
+        Optional<Cliente> resultado = service.atualizar("00000000000", new Cliente("00000000000", "Inexistente"));
+
+        assertTrue(resultado.isEmpty());
+        verify(repository, never()).save(any(Cliente.class));
+    }
+
+    // ---------- deletar ----------
+
+    @Test
+    @DisplayName("Deve deletar um cliente existente e retornar true")
+    void deveDeletarClienteExistente() {
+        when(repository.existsById("12345678900")).thenReturn(true);
+
+        boolean resultado = service.deletar("12345678900");
+
+        assertTrue(resultado);
+        verify(repository, times(1)).deleteById("12345678900");
+    }
+
+    @Test
+    @DisplayName("Deve retornar false ao deletar cliente inexistente")
+    void deveRetornarFalseAoDeletarClienteInexistente() {
+        when(repository.existsById("00000000000")).thenReturn(false);
+
+        boolean resultado = service.deletar("00000000000");
+
+        assertFalse(resultado);
+        verify(repository, never()).deleteById(anyString());
+    }
 }

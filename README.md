@@ -80,6 +80,8 @@ POST   /api/pecas                    → Cadastrar peça
 GET    /api/pecas                    → Listar todas as peças
 GET    /api/pecas/{id}               → Buscar por ID
 GET    /api/pecas/nome/{nome}        → Buscar por nome
+PUT    /api/pecas/{id}                → Atualizar peça (404 se não existir)
+DELETE /api/pecas/{id}                → Remover peça (204, ou 404 se não existir)
 ```
 
 ### Clientes
@@ -88,6 +90,8 @@ POST   /api/clientes                 → Cadastrar cliente
 GET    /api/clientes                 → Listar todos os clientes
 GET    /api/clientes/cpf/{cpf}       → Buscar por CPF
 GET    /api/clientes/nome/{nome}     → Buscar por nome
+PUT    /api/clientes/{cpf}            → Atualizar cliente (404 se não existir)
+DELETE /api/clientes/{cpf}            → Remover cliente (204, ou 404 se não existir)
 ```
 
 ### Representantes
@@ -96,6 +100,8 @@ POST   /api/representantes           → Cadastrar representante
 GET    /api/representantes           → Listar todos os representantes
 GET    /api/representantes/cpf/{cpf} → Buscar por CPF
 GET    /api/representantes/nome/{nome}→ Buscar por nome
+PUT    /api/representantes/{cpf}      → Atualizar representante (404 se não existir)
+DELETE /api/representantes/{cpf}      → Remover representante (204, ou 404 se não existir)
 ```
 
 ## 📝 Exemplos de uso com curl
@@ -119,6 +125,33 @@ curl -X POST http://localhost:8080/api/representantes \
   -H "Content-Type: application/json" \
   -d '{"cpf": "987.654.321-00", "nome": "Maria Souza"}'
 ```
+
+## 🧪 Testes
+
+O projeto tem três camadas de teste independentes:
+
+### Unitários (Controller/Service/Repository)
+Rodam isolados (sem Docker, sem rede) para os 3 serviços de negócio — `@WebMvcTest` para o Controller com o Service mockado, Mockito puro para o Service com o Repository mockado, e `@DataJpaTest` para o Repository com H2 real em memória.
+```bash
+mvn test
+```
+
+### Mutação (Pitest)
+Mede se os testes unitários realmente detectam bugs introduzidos no código (não só se cobrem as linhas). Roda sob demanda, um serviço por vez — não faz parte de `mvn test`/`mvn verify` porque é mais lento:
+```bash
+mvn -pl pecas-service org.pitest:pitest-maven:mutationCoverage
+mvn -pl clientes-service org.pitest:pitest-maven:mutationCoverage
+mvn -pl representantes-service org.pitest:pitest-maven:mutationCoverage
+```
+O relatório HTML fica em `<serviço>/target/pit-reports/`.
+
+### Integração (fim a fim, módulo `integration-tests`)
+Testes de caixa-preta que sobem a stack real via Docker e validam através do Gateway de verdade — sem mockar nada, incluindo roteamento via Eureka e o CRUD completo (POST/GET/PUT/DELETE) dos 3 domínios:
+```bash
+docker compose up --build -d
+mvn -pl integration-tests verify
+```
+Se a stack não estiver no ar, os testes são pulados (não falham) com uma mensagem explicando como subi-la.
 
 ## 🔧 Stack Tecnológica
 

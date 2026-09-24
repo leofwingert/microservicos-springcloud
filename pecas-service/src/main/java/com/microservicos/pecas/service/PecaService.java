@@ -31,4 +31,20 @@ public class PecaService {
     public List<Peca> buscarPorNome(String nome) {
         return repository.findByNomeContainingIgnoreCase(nome);
     }
+
+    public Optional<Peca> atualizar(Long id, Peca dadosAtualizados) {
+        return repository.findById(id).map(peca -> {
+            peca.setNome(dadosAtualizados.getNome());
+            peca.setDescricao(dadosAtualizados.getDescricao());
+            return repository.save(peca);
+        });
+    }
+
+    public boolean deletar(Long id) {
+        if (!repository.existsById(id)) {
+            return false;
+        }
+        repository.deleteById(id);
+        return true;
+    }
 }

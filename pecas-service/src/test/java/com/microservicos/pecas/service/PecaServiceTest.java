@@ -141,4 +141,55 @@ class PecaServiceTest {
         assertTrue(resultado.isEmpty());
         verify(repository, times(1)).findByNomeContainingIgnoreCase("inexistente");
     }
+
+    // ---------- atualizar ----------
+
+    @Test
+    @DisplayName("Deve atualizar nome e descrição de uma peça existente")
+    void deveAtualizarPecaExistente() {
+        when(repository.findById(1L)).thenReturn(Optional.of(peca));
+        when(repository.save(any(Peca.class))).thenAnswer(invocation -> invocation.getArgument(0));
+
+        Optional<Peca> resultado = service.atualizar(1L, new Peca("Parafuso M10", "Descrição atualizada"));
+
+        assertTrue(resultado.isPresent());
+        assertEquals("Parafuso M10", resultado.get().getNome());
+        assertEquals("Descrição atualizada", resultado.get().getDescricao());
+        verify(repository, times(1)).save(any(Peca.class));
+    }
+
+    @Test
+    @DisplayName("Deve retornar Optional vazio ao atualizar peça inexistente")
+    void deveRetornarVazioAoAtualizarPecaInexistente() {
+        when(repository.findById(anyLong())).thenReturn(Optional.empty());
+
+        Optional<Peca> resultado = service.atualizar(99L, new Peca("Inexistente", "Descrição"));
+
+        assertTrue(resultado.isEmpty());
+        verify(repository, never()).save(any(Peca.class));
+    }
+
+    // ---------- deletar ----------
+
+    @Test
+    @DisplayName("Deve deletar uma peça existente e retornar true")
+    void deveDeletarPecaExistente() {
+        when(repository.existsById(1L)).thenReturn(true);
+
+        boolean resultado = service.deletar(1L);
+
+        assertTrue(resultado);
+        verify(repository, times(1)).deleteById(1L);
+    }
+
+    @Test
+    @DisplayName("Deve retornar false ao deletar peça inexistente")
+    void deveRetornarFalseAoDeletarPecaInexistente() {
+        when(repository.existsById(99L)).thenReturn(false);
+
+        boolean resultado = service.deletar(99L);
+
+        assertFalse(resultado);
+        verify(repository, never()).deleteById(anyLong());
+    }
 }

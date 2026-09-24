@@ -46,4 +46,18 @@ public class PecaController {
         }
         return ResponseEntity.ok(resultado);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Peca> atualizar(@PathVariable Long id, @Valid @RequestBody Peca peca) {
+        return service.atualizar(id, peca)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletar(@PathVariable Long id) {
+        return service.deletar(id)
+                ? ResponseEntity.noContent().build()
+                : ResponseEntity.notFound().build();
+    }
 }

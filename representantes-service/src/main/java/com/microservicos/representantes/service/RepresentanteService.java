@@ -31,4 +31,19 @@ public class RepresentanteService {
     public List<Representante> buscarPorNome(String nome) {
         return repository.findByNomeContainingIgnoreCase(nome);
     }
+
+    public Optional<Representante> atualizar(String cpf, Representante dadosAtualizados) {
+        return repository.findById(cpf).map(representante -> {
+            representante.setNome(dadosAtualizados.getNome());
+            return repository.save(representante);
+        });
+    }
+
+    public boolean deletar(String cpf) {
+        if (!repository.existsById(cpf)) {
+            return false;
+        }
+        repository.deleteById(cpf);
+        return true;
+    }
 }
